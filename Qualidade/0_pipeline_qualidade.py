@@ -28,13 +28,11 @@ print("Carregando dados de sensores...")
 df_sensores = pd.read_csv(SENSOR_FILE)
 print(f"df_sensores shape: {df_sensores.shape}")
 
-# 2. Carregar labels de qualidade (lado esquerdo)
 qualidade_cols = ['good_road_left', 'regular_road_left', 'bad_road_left']
 print("Carregando labels de qualidade...")
 df_labels = pd.read_csv(LABEL_FILE, usecols=qualidade_cols)
 print(f"df_labels shape: {df_labels.shape}")
 
-# 3. Criar a coluna target_qualidade (0=boa, 1=regular, 2=ruim)
 def map_qualidade(row):
     if row['good_road_left'] == 1:
         return 0  # boa
@@ -54,7 +52,6 @@ if len(df_sensores) != len(df_labels):
 df_final_qualidade = df_sensores.copy()
 df_final_qualidade['target_qualidade'] = df_labels['target_qualidade']
 
-# 6. Remover linhas com target_qualidade = -1 (se existirem)
 n_before = len(df_final_qualidade)
 df_final_qualidade = df_final_qualidade[df_final_qualidade['target_qualidade'] != -1]
 n_after = len(df_final_qualidade)
@@ -62,7 +59,6 @@ n_after = len(df_final_qualidade)
 print(f"\nRegistros antes de remover indefinidos: {n_before}")
 print(f"Registros após remover indefinidos:   {n_after}")
 
-# 7. Salvar em CSV
 df_final_qualidade.to_csv(OUTPUT_FILE, index=False)
 print(f"\nArquivo salvo em: {OUTPUT_FILE}")
 print("Columns:", df_final_qualidade.columns[:10], "...")

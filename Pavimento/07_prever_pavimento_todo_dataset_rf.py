@@ -18,7 +18,7 @@ rf.fit(X_train, y_train) # Treina RF
 
 # Carrega dataset completo de pavimento
 df_pav = pd.read_csv(os.path.join(DATAPATH, "pavimento_pronto.csv")) # Dataset com 91.555 linhas
-print("pavimento_pronto:", df_pav.shape) # (91555, 34 colunas)
+print("pavimento_pronto:", df_pav.shape) 
 
 # Usa as mesmas 32 colunas de sensores de X_train
 sensor_cols = X_train.columns.tolist() # Lista das colunas de sensores

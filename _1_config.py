@@ -1,10 +1,10 @@
 import os
 
-DATAPATH = r"D:\Redes Neurais\Projeto-RNA\PVS 9"
+# Caminho absoluto desta pasta (onde está _1_config.py)
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-PROJECT_ROOT = r"D:\Redes Neurais\Projeto_RNA"
+# Pasta onde estão os dados (por exemplo, subpasta "PVS 9" dentro do projeto)
+DATAPATH = os.path.join(PROJECT_ROOT, "PVS 9")
 
-os.makedirs(PROJECT_ROOT, exist_ok=True)
-
-print("DATAPATH:", DATAPATH)
 print("PROJECT_ROOT:", PROJECT_ROOT)
+print("DATAPATH:", DATAPATH)

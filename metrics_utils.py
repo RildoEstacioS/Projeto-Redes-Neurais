@@ -12,6 +12,7 @@ from _1_config import DATAPATH, PROJECT_ROOT
 
 # ========= PAVIMENTO =========
 
+
 def avaliar_rf_pavimento():
     X_train = pd.read_csv(os.path.join(DATAPATH, "X_train.csv"))
     y_train = pd.read_csv(os.path.join(DATAPATH, "y_train.csv")).squeeze()
@@ -103,7 +104,8 @@ def avaliar_lstm_pavimento():
     }
 
 
-# ========= QUALIDADE (pavimento_previsto_RF) =========
+# ========= QUALIDADE (pavimento previsto em cascata) =========
+
 
 def _carrega_qual_RF():
     data_dir = os.path.join(PROJECT_ROOT, "Qualidade", "data")
@@ -177,13 +179,23 @@ def avaliar_svm_qualidade_pavprev_RF():
 
 
 def avaliar_lstm_qualidade_pavprev_RF():
+    """
+    Avalia a LSTM de qualidade usando as sequências geradas a partir
+    da base com pavimento previsto pela LSTM de pavimento.
+    """
     data_dir = os.path.join(PROJECT_ROOT, "Qualidade", "data")
-    X_test_seq = np.load(os.path.join(data_dir, "X_test_qual_seq_pavprev.npy"))
-    y_test_seq = np.load(os.path.join(data_dir, "y_test_qual_seq_pavprev.npy"))
+
+    # Arquivos gerados pelo script 5_lstm_qualidade_sequencias_pavprev.py (versão LSTM)
+    X_test_seq = np.load(os.path.join(data_dir, "X_test_qual_seq_pavprevLSTM.npy"))
+    y_test_seq = np.load(os.path.join(data_dir, "y_test_qual_seq_pavprevLSTM.npy"))
 
     from tensorflow.keras.models import load_model
-    # ajuste o caminho se estiver salvando o modelo LSTM de qualidade
-    model_path = os.path.join(PROJECT_ROOT, "Qualidade", "models", "lstm_qualidade_pavprev.h5")
+    model_path = os.path.join(
+        PROJECT_ROOT,
+        "Qualidade",
+        "models",
+        "lstm_qualidade_pavprevLSTM.h5",
+    )
     model = load_model(model_path)
 
     y_pred = model.predict(X_test_seq, verbose=0).argmax(axis=1)
@@ -191,7 +203,7 @@ def avaliar_lstm_qualidade_pavprev_RF():
     return {
         "tarefa": "qualidade",
         "modelo": "LSTM",
-        "pav_prev_origem": "RF",
+        "pav_prev_origem": "LSTM",
         "acc": accuracy_score(y_test_seq, y_pred),
         "cm": confusion_matrix(y_test_seq, y_pred),
     }

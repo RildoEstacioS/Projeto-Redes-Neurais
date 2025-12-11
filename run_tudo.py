@@ -21,7 +21,7 @@ def run(relpath):
 
 # ===================== PAVIMENTO =====================
 
-# Modelos tabulares + LSTM
+# # Modelos tabulares + LSTM
 # run(r"Pavimento\00_pipeline.py")
 # run(r"Pavimento\01_split_pavimento.py")
 # run(r"Pavimento\02_rf_pavimento.py")
@@ -31,22 +31,21 @@ def run(relpath):
 # run(r"Pavimento\06_lstm_pavimento_modelo.py")
 
 # # Previsto para TODO o dataset (RF, MLP, LSTM, SVM)
-# run(r"Pavimento\07_prever_pavimento_todo_dataset.py")          # RF
+# run(r"Pavimento\07_prever_pavimento_todo_dataset_rf.py")          # RF
 # run(r"Pavimento\08_prever_pavimento_todo_dataset_mlp.py")      # MLP
 # run(r"Pavimento\09_prever_pavimento_todo_dataset_lstm.py")     # LSTM
 # run(r"Pavimento\10_prever_pavimento_todo_dataset_svm.py")      # SVM
 
 
-# ===================== QUALIDADE =====================
+# # ===================== QUALIDADE ===================== 
 
-run(r"Qualidade\0_pipeline_qualidade.py")
-run(r"Qualidade\1_pipelines_qualidade_multiplos_pavprev.py")
-run(r"Qualidade\2_rf_qualidade_pavprev.py")
-run(r"Qualidade\3_mlp_qualidade_pavprev.py")
-run(r"Qualidade\4_svm_qualidade_pavprev.py")
-run(r"Qualidade\5_lstm_qualidade_sequencias_pavprev.py")
-run(r"Qualidade\6_lstm_qualidade_modelo_pavprev.py")
-
+# run(r"Qualidade\0_pipeline_qualidade.py")
+# run(r"Qualidade\1_pipelines_qualidade_multiplos_pavprev.py")
+# run(r"Qualidade\2_rf_qualidade_pavprev.py")
+# run(r"Qualidade\3_mlp_qualidade_pavprev.py")
+# run(r"Qualidade\4_svm_qualidade_pavprev.py")
+# run(r"Qualidade\5_lstm_qualidade_sequencias_pavprev.py")
+# run(r"Qualidade\6_lstm_qualidade_modelo_pavprev.py")
 
 # ===================== MÉTRICAS CONSOLIDADAS =====================
 
@@ -117,4 +116,4 @@ print("Matrizes de confusão salvas em:", out_npz)
 run(r"plots_modelos.py")
 run(r"plots_matriz.py")
 
-print("\n=== Pipeline completo finalizado com métricas salvas. ===")
+print("\nPipeline completo finalizado com métricas salvas.")

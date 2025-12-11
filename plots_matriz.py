@@ -32,7 +32,7 @@ if __name__ == "__main__":
     plot_cm(data["cm_pavimento_LSTM"], classes_pav, "LSTM (Pavimento)", "cm_pavimento_lstm.png")
 
     # Qualidade com pavimento_previsto_RF
-    plot_cm(data["cm_qualidade_RF_pavRF"],   classes_qual, "RF pav_RF (Qualidade)",   "cm_qualidade_rf_pavRF.png")
-    plot_cm(data["cm_qualidade_MLP_pavRF"],  classes_qual, "MLP pav_RF (Qualidade)",  "cm_qualidade_mlp_pavRF.png")
-    plot_cm(data["cm_qualidade_SVM_pavRF"],  classes_qual, "SVM pav_RF (Qualidade)",  "cm_qualidade_svm_pavRF.png")
-    plot_cm(data["cm_qualidade_LSTM_pavRF"], classes_qual, "LSTM pav_RF (Qualidade)", "cm_qualidade_lstm_pavRF.png")
+    plot_cm(data["cm_qualidade_RF_pavRF"],   classes_qual, "RF (Qualidade)",   "cm_qualidade_rf.png")
+    plot_cm(data["cm_qualidade_MLP_pavRF"],  classes_qual, "MLP (Qualidade)",  "cm_qualidade_mlp.png")
+    plot_cm(data["cm_qualidade_SVM_pavRF"],  classes_qual, "SVM (Qualidade)",  "cm_qualidade_svm.png")
+    plot_cm(data["cm_qualidade_LSTM_pavRF"], classes_qual, "LSTM (Qualidade)", "cm_qualidade_lstm.png")

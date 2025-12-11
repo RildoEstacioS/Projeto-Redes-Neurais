@@ -1,9 +1,12 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
+import sys
 
-# Modificar caminho se precisar
-DATA_PATH = r"D:\Redes Neurais\Projeto-RNA\PVS 9"
+ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(ROOT_DIR)
+
+from _1_config import DATAPATH as DATA_PATH, PROJECT_ROOT
 FINAL_DATASET = os.path.join(DATA_PATH, "pavimento_pronto.csv")
 df_final = pd.read_csv(FINAL_DATASET)
 
